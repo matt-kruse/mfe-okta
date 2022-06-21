@@ -1,0 +1,27 @@
+{
+  "name": "mfe-okta",
+  "version": "1.0.0",
+  "description": "Simple Okta auth code support for Micro-Frontends",
+  "main": "index.js",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "okta",
+    "mfe",
+    "micro",
+    "frontend"
+  ],
+  "author": "Matt Kruse <github@mattkruse.com> (http://mattkruse.com/)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matt-kruse/mfe-okta.git"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@okta/okta-auth-js": "^6.6.2"
+  }
+}
