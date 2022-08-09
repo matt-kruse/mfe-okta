@@ -1,6 +1,6 @@
 {
   "name": "mfe-okta",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple Okta auth code support for Micro-Frontends",
   "main": "index.js",
   "publishConfig": {

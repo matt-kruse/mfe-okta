@@ -74,6 +74,12 @@ const getAuthCode = async (config = {}) => {
     return authCodes[clientId];
   }
 
+  // Use custom scopes passed in or default scopes
+  let scopes = config.scopes;
+  if (!scopes) {
+    scopes = hookConfig.scopes;
+  }
+
   // Default Okta Config
   const oktaAuth = new OktaAuth({
     issuer: issuer,
@@ -91,7 +97,7 @@ const getAuthCode = async (config = {}) => {
       debug("Calling token.getWithoutPrompt()");
       const json = await oktaAuth.token.getWithoutPrompt({
         prompt: 'none',
-        scopes: hookConfig.scopes
+        scopes
       });
       oktaAuth.code = json.code;
       debug("Got auth code", oktaAuth.code);
@@ -108,7 +114,7 @@ const getAuthCode = async (config = {}) => {
       debug("Calling token.getWithPopup()");
       const json = await oktaAuth.token.getWithPopup({
         prompt: 'none',
-        scopes: hookConfig.scopes
+        scopes
       });
       oktaAuth.code = json.code;
       debug("Got auth code", oktaAuth.code);
@@ -133,7 +139,7 @@ const getAuthCode = async (config = {}) => {
     oktaAuth.token.getWithRedirect({
       response_type: 'code',
       state: clientId+","+state,
-      scopes: hookConfig.scopes,
+      scopes,
       responseMode: 'fragment' // so code will be passed in hash
     })
     .catch(function (err) {
